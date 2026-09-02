@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000", {
+
+const API_URL = "https://instant-mechanic-backend-wdbx.onrender.com";
+const socket = io(API_URL, {
   autoConnect: false,
  });
 import {
@@ -43,6 +45,7 @@ function App() {
   const [sortOrder, setSortOrder] = useState("newest");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  
 
   const [bookingForm, setBookingForm] = useState({
   customerName: "",
@@ -79,15 +82,15 @@ function App() {
   const fetchDashboardData = async () => {
     try {
       const statsResponse = await fetch(
-        "http://localhost:5000/api/dashboard/stats"
+       `${API_URL}/api/dashboard/stats`
       );
 
       const bookingsResponse = await fetch(
-        "http://localhost:5000/api/bookings"
+        `${API_URL}/api/bookings`
       );
 
       const mechanicsResponse = await fetch(
-        "http://localhost:5000/api/mechanics"
+        `${API_URL}/api/mechanics`
        );
 
       if (!statsResponse.ok || !bookingsResponse.ok || !mechanicsResponse.ok) {
@@ -206,7 +209,7 @@ const revenueOverTime = bookings.reduce((acc, booking) => {
   const updateBookingStatus = async (bookingId, status) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/bookings/${bookingId}/status`,
+      `${API_URL}/api/bookings/${bookingId}/status`,
       {
         method: "PATCH",
         headers: {
@@ -241,7 +244,7 @@ const revenueOverTime = bookings.reduce((acc, booking) => {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/bookings/${bookingId}/assign`,
+      `${API_URL}/api/bookings/${bookingId}/assign`,
       {
         method: "PATCH",
         headers: {
@@ -263,7 +266,7 @@ const revenueOverTime = bookings.reduce((acc, booking) => {
 
   
     const bookingsResponse = await fetch(
-      "http://localhost:5000/api/bookings"
+      `${API_URL}/api/bookings`
     );
 
     const bookingsData = await bookingsResponse.json();
@@ -279,7 +282,7 @@ const revenueOverTime = bookings.reduce((acc, booking) => {
 
   try {
     const response = await fetch(
-      "http://localhost:5000/api/bookings",
+      `${API_URL}/api/bookings`,
       {
         method: "POST",
         headers: {
