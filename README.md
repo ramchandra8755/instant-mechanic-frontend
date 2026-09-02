@@ -1,75 +1,88 @@
-# React + TypeScript + Vite
+# 🚗 Instant Mechanic — Live Vehicle Service Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack live vehicle service management dashboard built for the Instant Mechanic Full Stack Developer Intern task.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Frontend:  
+https://instant-mechanic-frontend-nine.vercel.app
 
-## React Compiler
+Backend API:  
+https://instant-mechanic-backend-wdbx.onrender.com
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+### Dashboard Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Total Bookings
+- Today's Bookings
+- Completed Bookings
+- Pending Bookings
+- Cancelled Bookings
+- Total Revenue
+- Active Mechanics
+- New Customers
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Analytics
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Bookings over time
+- Revenue over time
+- Booking status distribution
+- Service/category breakdown
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Recent Bookings
 
-```
+- Booking ID
+- Customer
+- Vehicle
+- Service
+- Mechanic
+- Status
+- Estimated Cost
+- Date & Time
+- Search
+- Status filtering
+- Sorting
+- Pagination
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### Mechanics
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Mechanic name
+- Specialization
+- Current status
+- Jobs completed
+- Current/last booking
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Real-Time Updates
 
-```
+The dashboard uses Socket.IO for live booking updates without requiring a full page refresh.
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Recharts
+- Lucide React
+- Socket.IO Client
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Socket.IO
+
+## 🏗️ Architecture
+
+React + Vite Frontend  
+↓  
+REST API + Socket.IO  
+↓  
+Node.js + Express Backend  
+↓  
+MongoDB
